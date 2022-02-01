@@ -31,3 +31,35 @@ app.delete('/delete/:user', (req, res) => {
 app.delete('/users', (req, res) => {
     // Delete all Users
 });
+
+// Performing CRUD Operations in Node.js
+app.post("/create", (req, res) => {
+    // Check if the request body is empty
+    if (!Object.keys(req.body).length) {
+        return res.status(400).json({
+            message: "Request body cannot be empty",
+        });
+    }
+    // Use object destructing to get name and age
+    const { name, age } = req.body;
+    if (!name || !age) {
+        res.status(400).json({
+            message: "Ensure you sent both name and age",
+        });
+    }
+    const newUser = {
+        id: users.length + 1,
+        name,
+        age,
+    };
+    try {
+        users.push(newUser);
+        res.status(201).json({
+            message: "Successfully created a new user",
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to create user",
+        });
+    }
+});
