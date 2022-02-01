@@ -108,8 +108,8 @@ app.put('/users/:userID', (req, res) => {
                 message: "User not Found",
             });
         }
-        const userIDX = users.indexOF(user);
-        users[userIDX].name = req.body.name || user[userIDX].name;
+        const userIDX = users.indexOf(user);
+        users[userIDX].name = req.body.name || users[userIDX].name;
         users[userIDX].age = req.body.age || users[userIDX].age;
         res.status(200).json({
             message: "Successfully updated user",
@@ -123,3 +123,39 @@ app.put('/users/:userID', (req, res) => {
 });
 
 // How to Delete Users
+// Delete One User
+app.delete('/users/:userID', (req, res) => {
+    try {
+        const id = req.params.userID;
+        let userIDX = users.findIndex((user) => user.id === id);
+        if (!userIDX) {
+            res.status(404).json({
+                message: "User not found",
+            });
+        }
+        users.splice(userIDX, 1);
+        res.status(200).json({
+            message: "Successfully deleted user",
+            users,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to delete user",
+        });
+    }
+});
+
+// Delete All users
+app.delete('/users/:userID', (req, res) => {
+    try {
+        users.spice(0, users.length);
+        res.status(200).json({
+            message: "Successfully deleted all users",
+            users,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to delete user",
+        });
+    }
+});

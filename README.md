@@ -8,7 +8,7 @@
 
 Next create your `server.js` which will contain the following:
 
-[Require express and Initialize it. Configure express to parse JSON and URL encoded data. Finally, create a server using the `listen()` method from Express.](./server.js#L1-L13)
+[Require express and Initialize it. Configure express to parse JSON and URL encoded data. Finally, create a server using the `listen()` method from Express.js](./server.js#L1-L13)
 
 ## Getting Started: Create an Array to Store User Data.
 
@@ -27,7 +27,7 @@ Create the functions that will manipulate the user data and return a response ac
 To Create a new user data, you will need to:
 
 * Check if the request body is empty - if it is, send an error response.
-* Extract the user data from the request body
+* Extract the user data from the request body.
 * Validate the user data.
 * Push the user dat5a to the array.
 
@@ -52,13 +52,28 @@ To retrieve [one-user only](./server.js#L-80-L-99):
 
 To [update the User](./server.js#L-101-L-123):
 
-* Retrieve the user ID from the URL
-* Use `find()` to check whether the user exists
-* Use `indexOf()` to get the index of the user being referenced
+* Retrieve the user ID from the URL.
+* Use `find()` to check whether the user exists.
+* Use `indexOf()` to get the index of the user being referenced.
 * Use the index of to edit the user data when the data sent through the request body.
 
+### How to Delete Users
+
+You can choose to delete one user or all users.
+
+To [delete one user](./server.js#L-126-L-146):
+
+ * Retrieve the use ID from the URL.
+ * Use `find()` to check whether the user exists.
+ * Use `findIndex()` to get the index of the user being referenced.
+ * Use `splice()` to delete the user at the index.
+
+To [Delete All Users](./server.js#L-), `splice()` the whole array;
 
 
+## Summary
+
+This Exercise explains how to create a basic RESTFUL API in NodeJS. How to create an Express Server, set up routes, and finally, create handler functions that have interact with yor data through HTTP request/responses.
 
 
 
