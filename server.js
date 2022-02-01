@@ -97,3 +97,29 @@ app.get('/users/:usersID', (req, res) => {
         });
     }
 });
+
+// How to Update Users
+app.put('/users/:userID', (req, res) => {
+    try {
+        const id = parseInt(req.params.userID);
+        let user = user.find((user) => user.id === id);
+        if (!user) {
+            return res.status(404).json({
+                message: "User not Found",
+            });
+        }
+        const userIDX = users.indexOF(user);
+        users[userIDX].name = req.body.name || user[userIDX].name;
+        users[userIDX].age = req.body.age || users[userIDX].age;
+        res.status(200).json({
+            message: "Successfully updated user",
+            user,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to retrieve user",
+        });
+    }
+});
+
+// How to Delete Users

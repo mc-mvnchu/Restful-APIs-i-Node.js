@@ -40,7 +40,7 @@ To retrieve all users, return the [users array in your response](./server.js#L-6
 
 Using a APIs Tester like Postman, you should receive the array of users in the response body.
 
-### Retrieving Users
+#### Retrieving Users
 
 To retrieve [one-user only](./server.js#L-80-L-99):
 
@@ -48,6 +48,14 @@ To retrieve [one-user only](./server.js#L-80-L-99):
 * Use `find()` to identify which specific data you are requesting.
 * Return the user in the response.
 
+### How to Update Users
+
+To [update the User](./server.js#L-101-L-123):
+
+* Retrieve the user ID from the URL
+* Use `find()` to check whether the user exists
+* Use `indexOf()` to get the index of the user being referenced
+* Use the index of to edit the user data when the data sent through the request body.
 
 
 
