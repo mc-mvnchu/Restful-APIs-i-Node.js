@@ -2,9 +2,9 @@
 
 ## Package Setup
 
-`npm init  -y` - Initialize a package.json config file to install 3rd-Party Packages from NPM
+`npm init  -y` --> Initialize a package.json config file to install 3rd-Party Packages from NPM
 
-`npm i express nodemon` - Installs Express and Nodemon packages from NPM
+`npm i express nodemon` --> Installs Express and Nodemon packages from NPM
 
 Next create your `server.js` which will contain the following:
 
@@ -22,7 +22,7 @@ To perform operation on your data , you need to setup routing. Routes will deter
 
 Create the functions that will manipulate the user data and return a response according to the route matched These functions will create read and update and delete user data.
 
-### How to Create a New USer Data
+### How to Create a New User Data
 
 To Create a new user data, you will need to:
 
@@ -34,6 +34,19 @@ To Create a new user data, you will need to:
 _Note_:  You are Using an array for simplicity purposes. In real case scenario, you would be interacting with a database.
 [Editing your POST route](./server.js#L-35-L65)
 
+### How to Read Users
+
+To retrieve all users, return the [users array in your response](./server.js#L-67-L78).
+
+Using a APIs Tester like Postman, you should receive the array of users in the response body.
+
+### Retrieving Users
+
+To retrieve [one-user only](./server.js#L-80-L-99):
+
+* Get the user ID from the URL parameter.
+* Use `find()` to identify which specific data you are requesting.
+* Return the user in the response.
 
 
 

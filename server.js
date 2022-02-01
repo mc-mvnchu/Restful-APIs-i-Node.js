@@ -63,3 +63,37 @@ app.post("/create", (req, res) => {
         });
     }
 });
+
+// How to Read Users
+app.get('/users', (req, res) => {
+    try {
+        res.status(200).json({
+            users
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to retrieve all users",
+        });
+    }
+});
+
+// How to retrieve one user only
+app.get('/users/:usersID', (req, res) => {
+    const id = parseInt(req.params.userID);
+    console.log(id);
+    try {
+        let user = users.find((user) => user.id === id);
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found",
+            });
+        }
+        res.status(200).json({
+            user,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to retrieve user",
+        });
+    }
+});
